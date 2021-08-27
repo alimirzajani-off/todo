@@ -1,0 +1,170 @@
+@media (max-width: 770px) {
+    .header .search-boxs{
+        max-width: 20px !important;
+        margin-right: auto;
+        margin-left: 20px;
+    }
+    .header .search-tools .la-search{
+        position: relative;
+    top: -20px;
+    left: 2px;
+    padding-left: 0 !important;
+    }
+}
+@media (max-width: 770.98px) { 
+.search-boxs{
+    flex: inherit;
+    justify-content: inherit;
+    order: inherit;
+    align-self: inherit;
+    min-width: inherit;
+}
+}
+body {
+    direction: rtl;
+}
+* {
+    font-weight: 400;
+}
+span{
+    font-size: .9rem;
+}
+
+.main .task-list .list-checkbox p {
+    line-height: 3;
+    margin-bottom: 3;
+    margin-right: 20px;
+}
+
+.main .add-task-info-input {
+    color: #3e69e4;
+}
+
+.main .sb-item .la-home {
+    color: #3e69e4;
+}
+
+.main .sb-item .la-user {
+    color: #5ca52d;
+}
+
+.main .sidebar-footer {
+    color: #324bdf;
+}
+.main .header-icon-txt{
+    line-height: 2;
+}
+
+.task-list label:after {
+    background-color: teal;
+}
+
+.info {
+    position: relative;
+    left: -15px;
+    background: #F4F4F4;
+    width: 360px;
+    border-left: 1px solid #eaeaea;
+    text-align: start;
+}
+
+.main .task-step-header-txt {
+    line-height: 3;
+}
+.add-task-icon .sb-icon i{
+    position: relative;
+    right: -3px;
+}
+.main .task-step-header-txt span {
+    font-weight: 600;
+}
+
+.main .task-info {
+    display: grid;
+    background-color: white;
+    margin-top: 10px;
+    margin: 10 10 10 10;
+    border: 1px solid #eaeaea;
+}
+
+.main .info-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin:0 10 0 10;
+}
+.main .add-task-step{
+    color: #3e69e4;
+}
+.main .add-task-step-txt {
+    line-height:1;
+}
+.main .sb-icon .la-circle{
+    font-size: 23px;
+}
+
+.main .sb-icon .la-plus{
+    font-size: 23px;
+}
+.info .info-sb-icon{
+    font-size: 1.2rem;
+    line-height: 2.4rem;
+}
+.info .task-info-today{
+    width: 100%;
+    align-items: center;
+}
+.info .task-date-info{
+    display: grid;
+    font-size: 1.2rem;
+}
+.info .task-di-txt{
+    line-height: 1;
+    padding-right: 1rem;
+}
+.info .task-di{
+border-bottom: 1px solid  #e5e5e5;
+}
+.info .add-task-file-txt{
+    line-height: 1;
+}
+.info .task-info .task-info-note-input{
+    font-style: italic;
+    padding-bottom: 10px;
+}
+.info .task-info-note-input:focus-visible{
+outline: none;
+}
+.info .task-info .task-info-note-txt span{
+    font-size: small;
+    font-weight: 100;
+}
+/* 
+.info .task-info-note-input{
+    height: 40px;
+} */
+
+.checkbox-class{
+    margin-top: 14px;
+}
+.label-class{
+    padding-top: 14px;
+}
+.main .task-list .pretty.p-icon .state .icon{
+    top: 0;
+}
+input[type="text"]:focus,input[type="search"]:focus{
+outline: none;
+}
+.main .task-list,.info .task-di ,.info .task-info,.info .task-ditask-repeat{
+    cursor: pointer;
+}
+.main .task-list:hover{
+    background-color: #f5f5f5;
+}
+.info-footer{
+    position: fixed;
+    width: inherit;
+    bottom: 0px;
+    background: white;
+}

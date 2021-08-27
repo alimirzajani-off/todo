@@ -1,0 +1,95 @@
+@media (max-width: 770px) {
+    .header .search-boxs {
+        max-width: 20px !important;
+        margin-right: auto;
+        margin-left: 20px;
+    }
+    .header .search-tools .la-search {
+        position: relative;
+        top: -20px;
+        left: 2px;
+        padding-left: 0 !important;
+    }
+}
+
+@media (max-width: 770.98px) {
+    .search-boxs {
+        flex: inherit;
+        justify-content: inherit;
+        order: inherit;
+        align-self: inherit;
+        min-width: inherit;
+    }
+}
+
+body {
+    direction: rtl;
+}
+
+* {
+    font-weight: 400;
+}
+
+span {
+    font-size: .9rem;
+}
+
+.header .main-header {
+    background-color: #0078D7;
+    color: #5C72E4;
+}
+
+.header .profile-avatar {
+    height: 32px;
+}
+
+.header .right-section {
+    display: contents;
+    color: white;
+    font-size: 20px;
+}
+
+.header .right-section i {
+    padding-left: 20px;
+}
+
+.header .search-boxs {
+    height: 32px;
+    width: 100%;
+    max-width: 400px;
+    background-color: rgba(244, 246, 255, 0.8);
+}
+
+.header .search-box {
+    width: 93%;
+}
+
+.header .search-tools {
+    padding-top: 3px;
+}
+
+.header .search-tools .la-search {
+    padding-left: 6px;
+}
+
+.header .left-section .app-name span {
+    line-height: 1.5;
+}
+
+.header .app-icon .fa-th {
+    font-size: 20px;
+    color: white;
+}
+
+.task-list label:after {
+    background-color: teal;
+}
+
+
+.label-class {
+    padding-top: 14px;
+}
+
+input[type="text"]:focus, input[type="search"]:focus {
+    outline: none;
+}

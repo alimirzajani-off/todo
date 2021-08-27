@@ -1,0 +1,103 @@
+@media only screen and (min-width:992px){
+    .login-section .form-login{
+        padding-top: 90px !important;
+        padding-right: 20% !important;
+    }
+}
+body{
+    direction: rtl;
+}
+   .login-section .back-login2{
+        background-color: #2F80EC;
+        height: 150px;
+        top: -72px;
+        border-radius: 50%;
+    }
+    .login-section .back-login1{    
+        background-color: #2F80EC;
+        width: 800px !important;
+        border-radius: 30%;
+        position: fixed;
+        top: -175px;
+        right: -175px;
+        overflow-x:hidden ;
+        bottom: 350px;
+    }
+    .login-section .text-login{
+        margin-bottom: 35px;
+    }
+    .login-section .login-part{
+        margin: auto;
+    }
+    .login-section .login-input{
+        display: grid;
+    }
+    .login-section .input-group{
+        justify-content: center;
+    }
+    .login-section .email-input , .pass-input{
+        border: none;
+        width: 100%;
+        margin-right: 20px;
+    }
+    .login-section .btn-login{
+        margin: auto;
+        display: flex;
+        align-items: center;
+    }
+    .login-section .btn-primary{
+        font-size: 15px;
+        width: 120px;
+        height: 39px;
+        border-radius: 20px;
+        line-height: 1;
+    }
+    .login-section .help-btn{
+        margin-top: 25px;
+        padding-left: 20%;
+    }
+    .login-section .btn-danger{
+        font-size: 15px;
+        width: 78%;
+        border-radius: 10px;
+    }
+    .login-section .email , .pass{
+        padding-left: 20px;
+        width: 60%;
+        height: 45px;
+        margin-bottom: 20px;
+        border-radius: 7px;
+        box-shadow: 0px 7px 20px 0px rgba(98, 105, 103, 0.3);
+    }
+    .login-section .fa-envelope ,.login-section .fa-lock{
+        padding-top: 15px;
+    }
+    .login-section .hr-login {
+        margin-bottom: 30px;
+        clear: both;
+        overflow: hidden;
+        width: 78%;
+    }
+    .login-section .hr-login::before {
+        right: 0.5em;
+        margin-left: -50%;
+    }
+    .login-section .hr-login::before, .hr-login::after {
+        content: '';
+        position: relative;
+        width: 50%;
+        background-color: rgba(0,0,0,0.2);
+        display: inline-block;
+        height: 1px;
+        vertical-align: middle;
+    }
+    .login-section .hr-login::after {
+        left: 0.5em;
+        margin-right: -50%;
+    }
+    .login-section .fopa-login:hover{
+        text-decoration: none;
+    }
+    input[type="email"]:focus,input[type="password"]:focus{
+        outline: none;
+    }
