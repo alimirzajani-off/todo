@@ -23,7 +23,7 @@ class StepList extends React.Component {
 
     renderTask() {
         return this.state.details.map((task) => {
-            return (<>
+            return (<div>
                 <div className="task-list" key={task.id} >
                     <div className="task-name float-right">
                         <span className="list-checkbox float-right" >
@@ -39,7 +39,7 @@ class StepList extends React.Component {
                     <div className="task-favorite" onClick={(id) => this.handleDeleteStep(task.id)}>
                         <i class="fas fa-times"></i>
                     </div>
-                </div> </>
+                </div> </div>
             )
         })
     }

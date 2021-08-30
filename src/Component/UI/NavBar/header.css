@@ -35,6 +35,9 @@ span {
 }
 
 .header .main-header {
+    position: fixed;
+    width: -webkit-fill-available;
+    z-index: 2;
     background-color: #0078D7;
     color: #5C72E4;
 }

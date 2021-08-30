@@ -22,7 +22,7 @@ class AddStep extends React.Component {
 
     render() {
         return (
-            <>
+            <div>
                 <form onSubmit={e => this.onSubnitHandler(e)}>
                     <div className="ui add-task-info-input add-task-icon transparent right icon input sb-icon d-flex">
                         <i className="las la-plus ass-task-plus" onClick={e=>this.onSubnitHandler(e)}></i>
@@ -39,7 +39,7 @@ class AddStep extends React.Component {
                     </div> */}
                 </form>
 
-            </>
+            </div>
         )
     }
 }

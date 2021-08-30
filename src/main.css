@@ -41,6 +41,9 @@ body {
 span{
     font-size: .9rem;
 }
+.main .main-body{
+    padding-top: 3rem;
+}
 .main .row {
     flex-wrap: initial;
     margin: 0;

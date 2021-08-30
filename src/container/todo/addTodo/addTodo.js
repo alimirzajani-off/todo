@@ -6,8 +6,8 @@ class AddTodo extends React.Component {
     state = {
         task_Value: '',
         task_Important:false,
-        task_created:moment().format('jYYYY-jM-jD HH:mm:ss'),
-        task_Date_Created:moment().format('jYYYY-jM-jD')
+        // task_created:moment().format('jYYYY-jM-jD HH:mm:ss'),
+        // task_Date_Created:moment().format('jYYYY-jM-jD')
     }
     onChangeHandler(e) {
         this.setState({ task_Value: e.target.value })
@@ -18,15 +18,15 @@ class AddTodo extends React.Component {
             title: this.state.task_Value,
             content:this.state.task_Value,
             important:this.state.task_Important,
-            addedDateTime:this.state.task_created,
-            added:{
-                task_Date_Created:this.state.task_Date_Created,
-            },
-            task_updated:null,
+            // addedDateTime:this.state.task_created,
+            // added:{
+            //     task_Date_Created:this.state.task_Date_Created,
+            // },
+            // task_updated:null,
             done:false,
             Note:''
         }
-        // axios.post('/task_list.json', data)
+
         dataService.create(data).then(res=> {
             console.log(res);
             if (res.status==201){
@@ -40,7 +40,7 @@ class AddTodo extends React.Component {
 
     render() {
         return (
-            <>
+            <div>
                 <form onSubmit={e => this.onSubnitHandler(e)}>
                     <div className="ui add-task-info-input add-task-icon transparent right icon input sb-icon">
                         <i className="las la-plus ass-task-plus"></i>
@@ -49,7 +49,7 @@ class AddTodo extends React.Component {
                     </div>
                 </form>
 
-            </>
+            </div>
         )
     }
 }

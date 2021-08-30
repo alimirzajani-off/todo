@@ -1,15 +1,16 @@
 import React from 'react'
-import moment from 'moment-jalaali'
+// import moment from 'moment-jalaali'
+import moment from 'moment'
 
 class MyDayTodoList extends React.Component {
     state = {
         details: [],
-        todayIs: moment().format('jYYYY-jM-jD')
+        todayIs: moment().format().split("T")
     }
 
     renderTask() {
         const dayList = this.props.Data.filter(item => {
-            if (item.Date_Created === this.state.todayIs||item.created_Update===this.state.todayIs) {
+            if (item.time == this.state.todayIs[0]||item.created_Update===this.state.todayIs) {
                 return item
             }
         })
@@ -23,27 +24,28 @@ class MyDayTodoList extends React.Component {
             listTodo = todosSearch
         }
         return listTodo.map((task) => {
-            return (<>
-                <div className="task-list"
-                    key={task.id}
-                    onClick={
-                        () => this.props.handleDisplayOnInfo()} >
-                    <div className="task-name float-right"
-                        onClick={
-                            () => this.props.handleInfoDetail(task.id)} >
+            // return <List id={task.id} title={task.title} handleDisplayOnInfo={this.props.handleDisplayOnInfo} handleInfoDetail={this.props.handleInfoDetail} handleTodoChecked={this.props.handleTodoChecked} />
+            return (<div>
+                <div className="task-list" key={task.todo_id} onClick={()=>this.props.handleInfoDetail(task.todo_id)}>
+                    <div className="task-name float-right">
                         <span className="list-checkbox float-right" >
                             <div className="pretty p-icon p-round p-smooth float-right checkbox-class" >
-                                <input type="checkbox" onClick={(e,id) => this.handleTodoChecked(e,task.d)} />
+                                {task.completed ? <input type="checkbox" onClick={(e, id) => this.props.handleTodoChecked(e, task.todo_id)} checked={true} /> : <input type="checkbox" onClick={(e, id) => this.props.handleTodoChecked(e, task.todo_id)} />}
                                 <div className="state p-primary" >
-                                    <i className="icon mdi mdi-check" > </i>
+                                    <i className="icon  mdi mdi-check" > </i>
                                     <label className="label-className" ></label>
-                                </div> </div> <p className="float-left" > {task.title} </p>
+                                </div>
+                            </div>
+                            {/* <p className="float-left" style={{textDecoration:'line-through'}}>{task.title}</p> */}
+                            {task.completed ? <p className="float-left" style={{ textDecoration: 'line-through' }} 
+                        onClick={()=>this.props.handleDisplayOnInfo(task.todo_id)} >{task.title}</p> : <p className="float-left" 
+                        onClick={()=>this.props.handleDisplayOnInfo(task.todo_id)} > {task.title} </p>}
                         </span>
                     </div>
-                    <div className="task-favorite" >
-                        <i className="lar la-star" > </i>
+                    <div className="task-favorite">
+                        <i className="lar la-star" onClick={(id) => this.props.handleTaskImportant(task.todo_id)} />
                     </div>
-                </div> </>
+                </div> </div>
             )
         })
     }

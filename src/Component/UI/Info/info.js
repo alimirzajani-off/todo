@@ -1,7 +1,7 @@
 import React from 'react'
 import moment from 'moment-jalaali'
-import DatePicker from 'react-datepicker2'
-import DatePickers from './Calender/DatePickers'
+// import DatePicker from 'react-datepicker2'
+// import DatePickers from './Calender/DatePickers'
 import Step from './todoStep/step'
 import './info.css'
 
@@ -75,7 +75,7 @@ class Info extends React.Component {
                                         onChange={value => this.setState({ CalenderValue: value })}
                                         value={this.state.CalenderValue}
                                     /> */}
-                                    <DatePickers onChange={data => console.log(data)} />
+                                    {/* <DatePickers onChange={data => console.log(data)} /> */}
                                 </div>
                                 <div className="task-ditask-repeat float-right d-flex pt-3">
                                     <div className="task-di-icon">

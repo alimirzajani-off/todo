@@ -18,13 +18,12 @@ class TodoList extends React.Component {
             listTodo = todosSearch
         }
         return listTodo.map((task) => {
-            return (<>
+            return (<div>
                 <div className="task-list" key={task.todo_id} onClick={()=>this.props.handleInfoDetail(task.todo_id)}>
                     <div className="task-name float-right">
                         <span className="list-checkbox float-right" >
                             <div className="pretty p-icon p-round p-smooth float-right checkbox-class" >
                                 {task.completed ? <input type="checkbox" onClick={(e, id) => this.props.handleTodoChecked(e, task.todo_id)} checked={true} /> : <input type="checkbox" onClick={(e, id) => this.props.handleTodoChecked(e, task.todo_id)} />}
-                                {/* <input type="checkbox" onClick={(e, id) => this.props.handleTodoChecked(e, task.id)} /> */}
                                 <div className="state p-primary" >
                                     <i className="icon  mdi mdi-check" > </i>
                                     <label className="label-className" ></label>
@@ -39,7 +38,7 @@ class TodoList extends React.Component {
                     <div className="task-favorite">
                         <i className="lar la-star" onClick={(id) => this.props.handleTaskImportant(task.todo_id)} />
                     </div>
-                </div> </>
+                </div> </div>
             )
         })
     }

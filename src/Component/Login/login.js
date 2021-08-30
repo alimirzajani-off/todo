@@ -1,7 +1,6 @@
 import React from 'react';
 import GoogleAuth from '../../container/Auth/GoogleAuth';
 import dataService from '../../data-service';
-// import dataService from './dataLogin-server';
 import './login.css'
 
 class Login extends React.Component {
@@ -21,7 +20,7 @@ class Login extends React.Component {
             password: this.state.password
         }
 
-        dataService.login(data).then(res => {
+        dataService.login(data).then(res => {   
             if (res.status == 200) {
                 localStorage.setItem("token",res.data.token)
                 this.props.history.push('/main')

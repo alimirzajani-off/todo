@@ -9,9 +9,9 @@ const Step = (props) => {
     const [details, setdetails] = useState()
     const getData = () => {
         // axios.get(`https://todo-319907-default-rtdb.firebaseio.com/task_list/${this.props.InfoDetail.id}/step_title.json`)
-        dataService.get(`${props.InfoDetail.id}`)
-            .then((response) => {
-                console.log(response);
+        // dataService.get(`${props.InfoDetail.id}`)
+        //     .then((response) => {
+        //         console.log(response);
                 // const Datas = []
                 // for (const item in response.data) {
                 //     if (Object.hasOwnProperty.call(response.data, item)) {
@@ -24,7 +24,7 @@ const Step = (props) => {
                 // }
 
                 // this.setState({ details: Datas })
-            })
+            // })
     }
 
     return (

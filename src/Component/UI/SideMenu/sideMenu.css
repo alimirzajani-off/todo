@@ -47,6 +47,14 @@ span{
     min-height: 92.5vh;
     position: relative;
     right: -15px;
+    /* width: auto;
+    background-color: #F4F4F4;
+    height: auto;
+    min-height: 92.5vh;
+    position: fixed;
+    right: 0;
+    z-index: 2;
+    margin-top: 0.7vh; */
 }
 
 .main .sidebar-header {

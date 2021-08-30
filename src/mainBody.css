@@ -34,12 +34,13 @@ span{
     margin: 0;
 }
 
-
 .main {
     flex: 1 1 0px;
     margin: 0 10 0 10;
 }
-
+.main .body{
+    padding-top: 3rem;
+}
 .main .sb-item:hover {
     background-color: #fafafa;
 }

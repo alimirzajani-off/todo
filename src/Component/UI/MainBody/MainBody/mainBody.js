@@ -1,48 +1,37 @@
 import React from 'react';
-import { Route, Router, Switch } from 'react-router-dom';
-import AddTodo from '../../../../container/todo/addTodo/addTodo';
+import { Redirect, Route} from 'react-router-dom';
+import ImportantTodoList from '../../../../container/todo/todoList/importantTodoList';
 import MyDayTodoList from '../../../../container/todo/todoList/myDayTodoList';
 import TodoList from '../../../../container/todo/todoList/todoList';
-import { createBrowserHistory } from 'history';
+import Assigned from '../../../../container/todo/todoList/assigned';
+import AddTodo from '../../../../container/todo/addTodo/addTodo';
+import MainHeader from '../MainHeader/mainHeader';
 import './mainBody.css';
-const history = createBrowserHistory();
 
 const MainBody = (props) => {
-    // return (
-    //     <Router>
-    //         <div className="main-body">
-    //             <div className="add-task d-flex">
-    //                 <AddTodo />
-    //             </div>
-    //             <Switch>
-    //                 <Route path="/" exact>
-    //                     <TodoList handleDisplayOnInfo={props.handleDisplayOnInfo} handleInfoDetail={props.handleInfoDetail} Data={props.Data} search={props.search} />
-    //                 </Route>
-    //                 <Route path="/toDayTask">
-    //                     <myDayTodoList />
-    //                 </Route>
-    //             </Switch>
-    //         </div>
-    //     </Router>
-    // )
-
     return (
-        <Router history={history}>
+        <div className="main app-main" >
+            <MainHeader />
             <div className="main-body">
                 <div className="add-task d-flex">
-                    <AddTodo />
+                    <AddTodo getData={props.getData} />
                 </div>
-                <Switch>
-                    <Route path="/">
-                        <TodoList handleDisplayOnInfo={props.handleDisplayOnInfo} handleInfoDetail={props.handleInfoDetail} Data={props.Data} search={props.search} />
-                    </Route>
-                    <Route path="/toDayTask" >
-                        <MyDayTodoList />
-                    </Route>
-                </Switch>
-            </div>
-        </Router>
-    )
+                <Redirect exact from="/" to="/main" />
 
+                <Route path="/main" exact>
+                    <TodoList handleDisplayOnInfo={props.handleDisplayOnInfo} handleInfoDetail={props.handleInfoDetail} Data={props.Data} search={props.search} handleTaskImportant={props.handleTaskImportant} handleTodoChecked={props.handleTodoChecked} />
+                </Route>
+                <Route path="/main/toDayTask">
+                    <MyDayTodoList handleDisplayOnInfo={props.handleDisplayOnInfo} handleInfoDetail={props.handleInfoDetail} Data={props.Data} search={props.search} handleTaskImportant={props.handleTaskImportant} handleTodoChecked={props.handleTodoChecked} />
+                </Route>
+                <Route path="/main/important">
+                    <ImportantTodoList handleDisplayOnInfo={props.handleDisplayOnInfo} handleInfoDetail={props.handleInfoDetail} Data={props.Data} search={props.search} handleTaskImportant={props.handleTaskImportant} handleTodoChecked={props.handleTodoChecked} />
+                </Route>
+                <Route path="/main/assigned_to_me">
+                    <Assigned />
+                </Route>
+            </div>
+        </div>
+    )
 }
 export default MainBody

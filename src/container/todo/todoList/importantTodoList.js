@@ -24,7 +24,7 @@ class ImportantTodoList extends React.Component {
             listTodo = todosSearch
         }
         return listTodo.map((task) => {
-            return (<>
+            return (<div>
                 <div className="task-list"
                     key={task.id}
                     onClick={
@@ -44,7 +44,7 @@ class ImportantTodoList extends React.Component {
                     <div className="task-favorite" >
                         <i className="lar la-star" > </i>
                     </div>
-                </div> </>
+                </div> </div>
             )
         })
     }
