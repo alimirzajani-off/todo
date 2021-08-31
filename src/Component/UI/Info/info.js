@@ -1,9 +1,11 @@
 import React from 'react'
 import moment from 'moment-jalaali'
+import AddDate from './Calender/AddDate/addDate'
 // import DatePicker from 'react-datepicker2'
 // import DatePickers from './Calender/DatePickers'
 import Step from './todoStep/step'
 import './info.css'
+// import DatePicker from 'react-datepicker2'
 
 
 class Info extends React.Component {
@@ -69,14 +71,7 @@ class Info extends React.Component {
                                         <span>Remind me</span>
                                     </div>
                                 </div>
-                                <div className="task-di task-due float-right d-flex pt-3 pb-3" onClick={() => this.handleCalenderDisplay()}>
-                                    {/* <DatePicker
-                                        timePicker={false}
-                                        onChange={value => this.setState({ CalenderValue: value })}
-                                        value={this.state.CalenderValue}
-                                    /> */}
-                                    {/* <DatePickers onChange={data => console.log(data)} /> */}
-                                </div>
+                                    <AddDate handleDate={this.props.handleDate} InfoDetail={this.props.InfoDetail}/>
                                 <div className="task-ditask-repeat float-right d-flex pt-3">
                                     <div className="task-di-icon">
                                         <i className="las la-calendar-alt"></i>
@@ -87,17 +82,21 @@ class Info extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="task-info">
-                            <div className="add-task-file d-flex p-3">
+                        <span className="task-info add-task-file d-flex p-3">
                                 <div className="add-task-file-icon">
                                     <i className="las la-paperclip"></i>
                                 </div>
                                 <div className="add-task-file-txt pr-3">
-                                    <input type="file" name="file" onChange={(e,id) => this.props.handleUploadFile(e,this.props.InfoDetail.todo_id)} />
+                                {/* <div> */}
+
                                     <span>Add file</span>
+                                {/* </div>
+                                <div> */}
+
+                                    <input type="file" name="file" onChange={(e,id) => this.props.handleUploadFile(e,this.props.InfoDetail.todo_id)} />
+                                {/* </div> */}
                                 </div>
-                            </div>
-                        </div>
+                        </span>
 
                         <div className="task-info p-3">
                             <textarea className="task-info-note-input border-0" placeholder={!this.props.InfoDetail.Note ? "Write Note..." : null} value={this.props.InfoDetail.Note} onChange={(e, id) => this.props.handleInfoNote(e, this.props.InfoDetail.id)} />

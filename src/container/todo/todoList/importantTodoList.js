@@ -1,4 +1,5 @@
 import React from 'react'
+import List from './list'
 import moment from 'moment-jalaali'
 
 class ImportantTodoList extends React.Component {
@@ -24,28 +25,7 @@ class ImportantTodoList extends React.Component {
             listTodo = todosSearch
         }
         return listTodo.map((task) => {
-            return (<div>
-                <div className="task-list"
-                    key={task.id}
-                    onClick={
-                        () => this.props.handleDisplayOnInfo()} >
-                    <div className="task-name float-right"
-                        onClick={
-                            () => this.props.handleInfoDetail(task.id)} >
-                        <span className="list-checkbox float-right" >
-                            <div className="pretty p-icon p-round p-smooth float-right checkbox-class" >
-                                <input type="checkbox" onClick={(e, id) => this.handleTodoChecked(e, task.d)} />
-                                <div className="state p-primary" >
-                                    <i className="icon mdi mdi-check" > </i>
-                                    <label className="label-className" ></label>
-                                </div> </div> <p className="float-left" > {task.title} </p>
-                        </span>
-                    </div>
-                    <div className="task-favorite" >
-                        <i className="lar la-star" > </i>
-                    </div>
-                </div> </div>
-            )
+            return <List id={task.todo_id} title={task.title} completed={task.completed} handleDisplayOnInfo={this.props.handleDisplayOnInfo} handleInfoDetail={this.props.handleInfoDetail} handleTodoChecked={this.props.handleTodoChecked} />
         })
     }
     render() {

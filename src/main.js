@@ -6,6 +6,7 @@ import Info from './Component/UI/Info/info';
 import moment from 'moment-jalaali'
 import dataService from './data-service';
 import './mainBody.css';
+import { sortBy } from 'lodash-es';
 
 
 const MainPage = () => {
@@ -34,11 +35,12 @@ const MainPage = () => {
                 setData(Datas)
             }).catch(e => console.log(e))
     }
+
     const [search, setsearch] = useState(null)
     const handleSearchProps = (e) => {
         setsearch(e.target.value.toLowerCase())
     }
-    console.log(Data);
+    
     const [isShow, setisShow] = useState(false)
     const handleDisplayOnInfo = () => {
         if (!isShow) {
@@ -51,7 +53,6 @@ const MainPage = () => {
             setisShow(false)
             const InfoUpdate = { title: InfoDetail.title, added: { Note: InfoDetail.Note }, created: InfoDetail.created, task_updated: InfoDetail.updated }
             dataService.updatePatch(id, InfoUpdate).then(res => {
-                console.log(res);
                 if (res.status == 204) {
                     getData();
                 }
@@ -62,7 +63,7 @@ const MainPage = () => {
     const [InfoDetail, setInfoDetail] = useState(null)
     const handleInfoDetail = (id) => {
         const trueInfo = Data.filter(item => item.todo_id === id)
-        trueInfo.forEach(element => setInfoDetail({ title: element.title, id: element.id, todo_id: element.todo_id, Note: element.Note, created: element.created, updated: element.updated, important: element.important }))
+        trueInfo.forEach(element => setInfoDetail({ title: element.title, id: element.id, todo_id: element.todo_id, Note: element.Note, created: element.created, updated: element.updated, important: element.important, time: element.time, completed: element.completed }))
     }
 
 
@@ -98,7 +99,8 @@ const MainPage = () => {
     const handleAddToMyDay = (id) => {
         const InfoUpdate = { created_Update: moment().format('jYYYY-jM-jD') }
         dataService.updatePatch(id, InfoUpdate).then(res => {
-            if (res.status == 201) {
+            console.log(res);
+            if (res.status == 204) {
                 getData();
             }
         }).catch(e => console.log(e))
@@ -114,6 +116,10 @@ const MainPage = () => {
         }).catch(e => console.log(e))
     }
 
+    const handleDate = (e) => {
+        console.log(e.target.value);
+    }
+
     const handleUploadFile = (e, id) => {
         console.log(id)
         console.log(e);
@@ -121,11 +127,14 @@ const MainPage = () => {
         let reader = new FileReader();
         reader.readAsDataURL(files[0]);
         const formData = new FormData();
-        formData.file = files[0];
+        formData.append('file', files[0])
+        console.log(formData)
+        
+        dataService.upload(id, formData).then(res => console.log(res)).catch(e => console.log(e))
         reader.onload = (e) => {
             console.log(e);
             // const fil = { todoId: id, path: e.target.result, size: files[0].size }
-            dataService.upload(id, formData).then(res => console.log(res)).catch(e => console.log(e))
+           /// dataService.upload(id, formData).then(res => console.log(res)).catch(e => console.log(e))
         }
     }
 
@@ -155,6 +164,7 @@ const MainPage = () => {
                             handleAddToMyDay={handleAddToMyDay}
                             handleTodoChecked={handleTodoChecked}
                             handleUploadFile={handleUploadFile}
+                            handleDate={handleDate}
                             getData={getData}
                             Data={Data}
                         />

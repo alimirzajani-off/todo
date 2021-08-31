@@ -1,5 +1,5 @@
 import React from 'react'
-
+import List from './list'
 class TodoList extends React.Component {
     state = {
         details: [],
@@ -18,28 +18,8 @@ class TodoList extends React.Component {
             listTodo = todosSearch
         }
         return listTodo.map((task) => {
-            return (<div>
-                <div className="task-list" key={task.todo_id} onClick={()=>this.props.handleInfoDetail(task.todo_id)}>
-                    <div className="task-name float-right">
-                        <span className="list-checkbox float-right" >
-                            <div className="pretty p-icon p-round p-smooth float-right checkbox-class" >
-                                {task.completed ? <input type="checkbox" onClick={(e, id) => this.props.handleTodoChecked(e, task.todo_id)} checked={true} /> : <input type="checkbox" onClick={(e, id) => this.props.handleTodoChecked(e, task.todo_id)} />}
-                                <div className="state p-primary" >
-                                    <i className="icon  mdi mdi-check" > </i>
-                                    <label className="label-className" ></label>
-                                </div>
-                            </div>
-                            {/* <p className="float-left" style={{textDecoration:'line-through'}}>{task.title}</p> */}
-                            {task.completed ? <p className="float-left" style={{ textDecoration: 'line-through' }} 
-                        onClick={()=>this.props.handleDisplayOnInfo(task.todo_id)} >{task.title}</p> : <p className="float-left" 
-                        onClick={()=>this.props.handleDisplayOnInfo(task.todo_id)} > {task.title} </p>}
-                        </span>
-                    </div>
-                    <div className="task-favorite">
-                        <i className="lar la-star" onClick={(id) => this.props.handleTaskImportant(task.todo_id)} />
-                    </div>
-                </div> </div>
-            )
+            return <List id={task.todo_id} title={task.title} completed={task.completed} handleDisplayOnInfo={this.props.handleDisplayOnInfo} handleInfoDetail={this.props.handleInfoDetail} handleTodoChecked={this.props.handleTodoChecked} />
+
         })
     }
     render() {

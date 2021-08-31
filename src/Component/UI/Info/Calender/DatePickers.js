@@ -1,4 +1,4 @@
-import { TextField, makeStyles } from '@material-ui/core'
+import { TextField , makeStyles } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
     container: {
         display: 'flex',
@@ -11,9 +11,8 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function DatePickers() {
+const DatePickers=()=> {
     const classes = useStyles();
-  
     return (
       <form className={classes.container} noValidate>
         <TextField
@@ -29,3 +28,5 @@ export default function DatePickers() {
       </form>
     );
   }
+
+  export default DatePickers

@@ -1,7 +1,13 @@
 import React from 'react'
+import dataService from '../../../data-service'
 import './header.css'
 
 class Header extends React.Component {
+
+    handleLogOut(){
+        dataService.logout().then(res=>console.log(res))
+    }
+
     render() {
         return (
             <div className="header">
@@ -20,7 +26,8 @@ class Header extends React.Component {
                                     <i className="las la-question"></i>
                                 </div>
                                 <div className="setting">
-                                    <i className="las la-cog"></i>
+                                {/* <div className="setting" onClick={()=>this.handleLogOut()}> */}
+                                <i className="las la-cog"></i>
                                 </div>
                             </div>
                         </div>

@@ -13,6 +13,9 @@ class DataService {
     login(data){
         return http.post(`/Accounts/login`,data)
     }
+    logout(){
+        return http.get(`/Accounts/logout`)
+    }
     delete(id){
         return http.delete(`/TodoItems/${id}`)
     }
