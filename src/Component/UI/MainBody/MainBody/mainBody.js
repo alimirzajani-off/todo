@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route} from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import ImportantTodoList from '../../../../container/todo/todoList/importantTodoList';
 import MyDayTodoList from '../../../../container/todo/todoList/myDayTodoList';
 import TodoList from '../../../../container/todo/todoList/todoList';
@@ -13,9 +13,7 @@ const MainBody = (props) => {
         <div className="main app-main" >
             <MainHeader />
             <div className="main-body">
-                <div className="add-task d-flex">
-                    <AddTodo getData={props.getData} />
-                </div>
+                <AddTodo getData={props.getData} />
                 <Redirect exact from="/" to="/main" />
 
                 <Route path="/main" exact>

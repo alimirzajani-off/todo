@@ -126,7 +126,9 @@ span{
 border-bottom: 1px solid  #e5e5e5;
 }
 .info .add-task-file-txt{
+    width: 100%;
     line-height: 1;
+    text-align: initial;
 }
 .info .task-info .task-info-note-input{
     font-style: italic;
@@ -168,4 +170,31 @@ outline: none;
     width: inherit;
     bottom: 0px;
     background: white;
+}
+
+.info .fileInput{
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.info .add-file-button{
+    display: flex;
+    align-items: baseline;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+.info .add-file-button:focus{
+    outline: none;
+    box-shadow: none;
+}
+
+.info .fileInputLabel{
+    width: 100%;
+    height: 100%;
+    flex: auto;
 }

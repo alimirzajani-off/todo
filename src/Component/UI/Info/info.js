@@ -1,18 +1,15 @@
 import React from 'react'
-import moment from 'moment-jalaali'
+import moment from 'moment'
 import AddDate from './Calender/AddDate/addDate'
 // import DatePicker from 'react-datepicker2'
 // import DatePickers from './Calender/DatePickers'
 import Step from './todoStep/step'
 import './info.css'
-// import DatePicker from 'react-datepicker2'
-
+import Delete from './deleteTodo'
 
 class Info extends React.Component {
     state = {
-        CalenderValue: moment().format('jYYYY-jM-jD HH:mm:ss'),
-        realDate: null,
-        star: [],
+        currentDate: moment().format().split("T")
     }
 
     render() {
@@ -25,7 +22,7 @@ class Info extends React.Component {
                                 <div className="task-step-header-info float-right d-flex">
                                     <div className="task-step-header-icon" style={{ marginTop: '11px' }}>
                                         <div className="pretty p-icon p-round p-smooth checkbox-className">
-                                             {/* <input type="checkbox" onClick={(e, id) => this.props.handleTodoChecked(e, this.props.InfoDetail.todo_id)} /> */}
+                                            {/* <input type="checkbox" onClick={(e, id) => this.props.handleTodoChecked(e, this.props.InfoDetail.todo_id)} /> */}
                                             {this.props.InfoDetail.completed ? <input type="checkbox" onClick={(e, id) => this.props.handleTodoChecked(e, this.props.InfoDetail.todo_id)} checked={true} /> : <input type="checkbox" onClick={(e, id) => this.props.handleTodoChecked(e, this.props.InfoDetail.todo_id)} />}
 
                                             {/* <input type="checkbox" onClick={(e,id) => this.props.handleTodoChecked(e,this.props.InfoDetail.id)}/> */}
@@ -71,7 +68,7 @@ class Info extends React.Component {
                                         <span>Remind me</span>
                                     </div>
                                 </div>
-                                    <AddDate handleDate={this.props.handleDate} InfoDetail={this.props.InfoDetail}/>
+                                <AddDate handleDate={this.props.handleDate} InfoDetail={this.props.InfoDetail} />
                                 <div className="task-ditask-repeat float-right d-flex pt-3">
                                     <div className="task-di-icon">
                                         <i className="las la-calendar-alt"></i>
@@ -82,21 +79,25 @@ class Info extends React.Component {
                                 </div>
                             </div>
                         </div>
-                        <span className="task-info add-task-file d-flex p-3">
-                                <div className="add-task-file-icon">
-                                    <i className="las la-paperclip"></i>
-                                </div>
-                                <div className="add-task-file-txt pr-3">
+                        <div className="task-info add-task-file d-flex p-3">
+                        <button className="add-file-button btn" aria-haspopup="true">
+                        <div className="add-task-file-icon">
+                                <i className="las la-paperclip"></i>
+                            </div>
+                            <div className="add-task-file-txt pr-3">
                                 {/* <div> */}
 
-                                    <span>Add file</span>
                                 {/* </div>
                                 <div> */}
 
-                                    <input type="file" name="file" onChange={(e,id) => this.props.handleUploadFile(e,this.props.InfoDetail.todo_id)} />
+                                <input id="fileAttach" type="file" name="file" className="fileInput" onChange={(e, id) => this.props.handleUploadFile(e, this.props.InfoDetail.todo_id)} />
+                                <label for="fileAttach" className="fileInputLabel" ><span>Add file</span></label>
+                                
                                 {/* </div> */}
-                                </div>
-                        </span>
+                            </div>
+                        </button>
+                            
+                        </div>
 
                         <div className="task-info p-3">
                             <textarea className="task-info-note-input border-0" placeholder={!this.props.InfoDetail.Note ? "Write Note..." : null} value={this.props.InfoDetail.Note} onChange={(e, id) => this.props.handleInfoNote(e, this.props.InfoDetail.id)} />
@@ -110,12 +111,13 @@ class Info extends React.Component {
                             <i className="las la-caret-square-left" onClick={() => this.props.handleDisplayOffInfo(this.props.InfoDetail.todo_id)}></i>
                         </div>
                         <div className="center">
-                            <span>Created Yesterday</span>
+                            <span>{this.state.currentDate[0]==this.props.InfoDetail.time? <p>Created Today</p> : <p>Created on {moment(this.props.InfoDetail.time).format("dddd, MMMM D")}</p>}</span>
                         </div>
-                        <div className="left" onClick={() => this.props.handleDeleteInfo(this.props.InfoDetail.todo_id)}>
-                            <i className="las la-trash-alt"></i>
+                        <div className="left">
+                           <Delete InfoDetail={this.props.InfoDetail} getData={this.props.getData} displayOffInfo={this.props.displayOffInfo} />
                         </div>
                     </div>
+                    {/* <InfoFooter InfoDetail={this.props.InfoDetail} handleDisplayOffInfo={this.props.handleDisplayOffInfo} handleDeleteInfo={this.props.handleDeleteInfo} /> */}
                 </div> : null
         )
     }

@@ -4,8 +4,8 @@ import './header.css'
 
 class Header extends React.Component {
 
-    handleLogOut(){
-        dataService.logout().then(res=>console.log(res))
+    handleLogOut() {
+        dataService.logout().then(res => console.log(res))
     }
 
     render() {
@@ -25,15 +25,17 @@ class Header extends React.Component {
                                 <div className="help">
                                     <i className="las la-question"></i>
                                 </div>
-                                <div className="setting">
-                                {/* <div className="setting" onClick={()=>this.handleLogOut()}> */}
-                                <i className="las la-cog"></i>
+                                <div className="setting" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i className="las la-cog"></i>
+                                    <div className="dropdown-menu dropdown-setting" aria-labelledby="dropdownMenuButton">
+                                        <span className="dropdown-item" onClick={() => this.handleLogOut()}>Log out</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div className="search-boxs bg-light rounded">
                             <span className="search-tools">
-                                <input type="search" name="" id="" placeholder="search" className="search-box border-0 txt-input" onChange={(e) => this.props.handleSearchProps(e)} />
+                                <input type="search" name="" id="" placeholder="search" className="search-box border-0 txt-input rounded" onChange={(e) => this.props.handleSearchProps(e)} />
                                 <i className="las la-search"></i>
                             </span>
                         </div>

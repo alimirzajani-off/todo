@@ -1,6 +1,6 @@
 import React from 'react'
+
 const List = (props) => {
-    console.log(props);
     return (<div>
         <div className="task-list" key={props.id} onClick={(id) => props.handleInfoDetail(props.id)}>
             <div className="task-name float-right">

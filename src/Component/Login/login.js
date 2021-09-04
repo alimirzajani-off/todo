@@ -56,7 +56,7 @@ class Login extends React.Component {
                                 <button className="btn btn-primary" onClick={() => this.checkLogin()}>ورود</button>
                                 <a href="#" className="fopa-login text-dark pr-5"><h6>فراموش کردن رمز عبور</h6></a>
                             </div>
-                            <GoogleAuth />
+                            {/* <GoogleAuth /> */}
                         </div>
                     </form>
                 </div>

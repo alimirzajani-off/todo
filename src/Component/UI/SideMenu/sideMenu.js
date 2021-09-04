@@ -41,7 +41,7 @@ class SideMenu extends React.Component {
                             <span>Assigned to you</span>
                         </div>
                     </Link>
-                    <Link to="/main" className="sb-item">
+                    <Link to="/" className="sb-item">
                         <div className="sb-icon">
                             <i className="las la-home"></i>
                         </div>

@@ -3,10 +3,9 @@ import MainBody from './Component/UI/MainBody/MainBody/mainBody';
 import SideMenu from './Component/UI/SideMenu/sideMenu';
 import Header from './Component/UI/NavBar/header';
 import Info from './Component/UI/Info/info';
-import moment from 'moment-jalaali'
+import moment from 'moment'
 import dataService from './data-service';
 import './mainBody.css';
-import { sortBy } from 'lodash-es';
 
 
 const MainPage = () => {
@@ -40,7 +39,7 @@ const MainPage = () => {
     const handleSearchProps = (e) => {
         setsearch(e.target.value.toLowerCase())
     }
-    
+
     const [isShow, setisShow] = useState(false)
     const handleDisplayOnInfo = () => {
         if (!isShow) {
@@ -48,41 +47,46 @@ const MainPage = () => {
         }
     }
 
+    const displayOffInfo = () => {
+        if (isShow) {
+            setisShow(false)
+        }
+    }
+
     const handleDisplayOffInfo = (id) => {
         if (isShow) {
             setisShow(false)
-            const InfoUpdate = { title: InfoDetail.title, added: { Note: InfoDetail.Note }, created: InfoDetail.created, task_updated: InfoDetail.updated }
-            dataService.updatePatch(id, InfoUpdate).then(res => {
-                if (res.status == 204) {
-                    getData();
-                }
-            }).catch(e => console.log(e))
+            // // const InfoNote = { Note: }
+            // dataService.updatePatch(id, InfoUpdate).then(res => {
+            //     if (res.status == 204) {
+            //         getData();
+            //     }
+            // }).catch(e => console.log(e))
 
         }
     }
+
+    const current = moment().format().split("T")
+    // console.log(moment(current[0]).format('LLLL'))
     const [InfoDetail, setInfoDetail] = useState(null)
     const handleInfoDetail = (id) => {
         const trueInfo = Data.filter(item => item.todo_id === id)
-        trueInfo.forEach(element => setInfoDetail({ title: element.title, id: element.id, todo_id: element.todo_id, Note: element.Note, created: element.created, updated: element.updated, important: element.important, time: element.time, completed: element.completed }))
+        trueInfo.forEach(element => {
+            setInfoDetail({ title: element.title, id: element.id, todo_id: element.todo_id, Note: element.Note, created: element.created, updated: element.updated, important: element.important, time: element.time, completed: element.completed })
+        })
     }
-
 
     const handleInfoNote = (e, id) => {
         const Note = e.target.value
-        const trueInfo = Data.filter(item => item.todo_id === id)
-        trueInfo.forEach(element => setInfoDetail({ added: { Note: Note }, updated: moment().format('jYYYY-jM-jD HH:mm:ss') }))
-    }
-
-    const handleDeleteInfo = (id) => {
-        dataService.delete(id).then(res => {
-            console.log(res);
-            if (res.status == 204) {
-                setisShow(false)
+        const InfoUpdate = { Note: Note, updated: moment().format('jYYYY-jM-jD HH:mm:ss')}
+        dataService.updatePatch(id, InfoUpdate).then(res => {
+            if (res.status == 201) {
                 getData();
             }
-        }).catch(e => console.log(e))
+        })
+        const trueInfo = Data.filter(item => item.todo_id === id)
+        trueInfo.forEach(element => setInfoDetail({ Note:element.Note, updated: moment().format('jYYYY-jM-jD HH:mm:ss') }))
     }
-
 
     const handleTaskImportant = (id) => {
         const trueInfo = Data.filter(item => item.id === id)
@@ -108,8 +112,8 @@ const MainPage = () => {
 
 
     const handleTodoChecked = (e, id) => {
-        const InfoUpdate = { completed: e.target.checked }
-        dataService.updatePatch(id, InfoUpdate).then(res => {
+        const InfoUpdated = { completed: e.target.checked }
+        dataService.updatePatch(id, InfoUpdated).then(res => {
             if (res.status == 204) {
                 getData();
             }
@@ -129,12 +133,12 @@ const MainPage = () => {
         const formData = new FormData();
         formData.append('file', files[0])
         console.log(formData)
-        
+
         dataService.upload(id, formData).then(res => console.log(res)).catch(e => console.log(e))
         reader.onload = (e) => {
             console.log(e);
             // const fil = { todoId: id, path: e.target.result, size: files[0].size }
-           /// dataService.upload(id, formData).then(res => console.log(res)).catch(e => console.log(e))
+            /// dataService.upload(id, formData).then(res => console.log(res)).catch(e => console.log(e))
         }
     }
 
@@ -159,11 +163,11 @@ const MainPage = () => {
                             handleDisplayOffInfo={handleDisplayOffInfo}
                             InfoDetail={InfoDetail}
                             handleInfoNote={handleInfoNote}
-                            handleDeleteInfo={handleDeleteInfo}
                             handleTaskImportant={handleTaskImportant}
                             handleAddToMyDay={handleAddToMyDay}
                             handleTodoChecked={handleTodoChecked}
                             handleUploadFile={handleUploadFile}
+                            displayOffInfo={displayOffInfo}
                             handleDate={handleDate}
                             getData={getData}
                             Data={Data}

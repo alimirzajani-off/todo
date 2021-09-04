@@ -14,39 +14,43 @@ class AddTodo extends React.Component {
     }
 
     onSubnitHandler(e) {
-        const data = {
-            title: this.state.task_Value,
-            content:this.state.task_Value,
-            important:this.state.task_Important,
-            // addedDateTime:this.state.task_created,
-            // added:{
-            //     task_Date_Created:this.state.task_Date_Created,
-            // },
-            // task_updated:null,
-            done:false,
-            Note:''
-        }
-
-        dataService.create(data).then(res=> {
-            console.log(res);
-            if (res.status==201){
-                this.props.getData();
-            }
-        }).catch(e=>console.log(e))
-
-        this.setState({task_Value:''})
+        this.addTaskHandler()
         e.preventDefault()
     }
 
+addTaskHandler(){
+    const data = {
+        title: this.state.task_Value,
+        content:this.state.task_Value,
+        important:this.state.task_Important,
+        // addedDateTime:this.state.task_created,
+        // added:{
+        //     task_Date_Created:this.state.task_Date_Created,
+        // },
+        // task_updated:null,
+        done:false,
+        note:'dfsdfsخهنخنبخینیبنخنسخنحخیبنحرخنحخسینdf'
+    }
+
+    dataService.create(data).then(res=> {
+        console.log(res);
+        if (res.status==201){
+            this.props.getData();
+            this.setState({task_Value:''})
+        }
+    }).catch(e=>console.log(e))
+
+}
+
     render() {
         return (
-            <div>
-                <form onSubmit={e => this.onSubnitHandler(e)}>
-                    <div className="ui add-task-info-input add-task-icon transparent right icon input sb-icon">
+            <div className="add-task d-flex">
+                <form className="add-task-form" onSubmit={e => this.onSubnitHandler(e)}>
+                    <span className="ui add-task-info-input add-task-icon transparent right icon input sb-icon">
                         <i className="las la-plus ass-task-plus"></i>
-                        <i className="las la-circle ass-task-circle d-none"></i>
-                        <input type="text" placeholder="add task" className="ui right" value={this.state.task_Value} onChange={e => this.onChangeHandler(e)} />
-                    </div>
+                        <span className="ass-task-circle d-none" onClick={() => this.addTaskHandler()}>Add</span>
+                        <input type="text" placeholder="add task" aria-label="add task" className="ui right addtask-placeholder" value={this.state.task_Value} onChange={e => this.onChangeHandler(e)} />
+                    </span>
                 </form>
 
             </div>

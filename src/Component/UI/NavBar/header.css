@@ -65,6 +65,7 @@ span {
 
 .header .search-box {
     width: 93%;
+    height: 100%;
 }
 
 .header .search-tools {
@@ -95,4 +96,8 @@ span {
 
 input[type="text"]:focus, input[type="search"]:focus {
     outline: none;
+}
+
+.dropdown-setting{
+    margin-top: 12px;
 }
