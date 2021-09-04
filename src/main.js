@@ -67,7 +67,6 @@ const MainPage = () => {
     }
 
     const current = moment().format().split("T")
-    // console.log(moment(current[0]).format('LLLL'))
     const [InfoDetail, setInfoDetail] = useState(null)
     const handleInfoDetail = (id) => {
         const trueInfo = Data.filter(item => item.todo_id === id)
