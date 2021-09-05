@@ -92,6 +92,10 @@ span{
     align-items: center;
     justify-content: space-between;
     margin:0 10 0 10;
+    position: fixed;
+    width: inherit;
+    bottom: 0px;
+    background: white;
 }
 .main .add-task-step{
     color: #3e69e4;
@@ -164,12 +168,6 @@ outline: none;
 /* .info .task-di{ */
 .main .task-list:hover{
     background-color: #f5f5f5;
-}
-.info-footer{
-    position: fixed;
-    width: inherit;
-    bottom: 0px;
-    background: white;
 }
 
 .info .fileInput{

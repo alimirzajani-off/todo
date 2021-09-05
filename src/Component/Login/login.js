@@ -1,4 +1,5 @@
 import React from 'react';
+import Loading from '../UI/Loader/loader'
 import GoogleAuth from '../../container/Auth/GoogleAuth';
 import dataService from '../../data-service';
 import './login.css'
@@ -6,35 +7,44 @@ import './login.css'
 class Login extends React.Component {
     state = {
         email: '',
-        password: ''
+        password: '',
+        loading: false
     }
+
     setEmail(e) {
         this.setState({ email: e.target.value })
     }
+
     setPassword(e) {
         this.setState({ password: e.target.value })
     }
+
     checkLogin() {
         const data = {
             email: this.state.email,
             password: this.state.password
         }
 
-        dataService.login(data).then(res => {   
+        this.setState({ loading: true })
+
+        dataService.login(data).then(res => {
             if (res.status == 200) {
-                localStorage.setItem("token",res.data.token)
+                localStorage.setItem("token", res.data.token)
                 this.props.history.push('/main')
+                this.setState({ loading: false })
             }
         }).catch(e => console.log(e))
     }
+
     onSubmitHandler(e) {
         e.preventDefault()
     }
+
     render() {
         return (
             <section className="login-section">
                 <div className="col-md-12 col-sm-12 d-block d-sm-none d-none d-sm-block d-md-none d-none d-md-block d-lg-none back-login2"></div>
-                <div className="col-xl-8 col-lg-8 col-md-12 col-sm-12 login-part">
+                {!this.state.loading ? <div className="col-xl-8 col-lg-8 col-md-12 col-sm-12 login-part">
                     <form className="form-login" onSubmit={e => this.onSubmitHandler(e)}>
                         <div className="login-input">
                             <div className="text-login text-center">
@@ -59,7 +69,7 @@ class Login extends React.Component {
                             {/* <GoogleAuth /> */}
                         </div>
                     </form>
-                </div>
+                </div> : <Loading />}
                 <div className="col-xl-4 col-lg-4 d-none d-lg-block d-xl-none d-none d-xl-block back-login1">
                 </div>
             </section>

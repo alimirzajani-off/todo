@@ -5,8 +5,18 @@ import moment from 'moment-jalaali'
 class ImportantTodoList extends React.Component {
     state = {
         details: [],
-        todayIs: moment().format('jYYYY-jM-jD')
+        todayIs: moment().format('jYYYY-jM-jD'),
+        // checkComplete: false
+
     }
+
+    // checkCompleteList() {
+    //     const check = this.props.Data.filter(item => {
+    //         if (item.completed == true) {
+    //             this.setState({ checkComplete: true })
+    //         }
+    //     })
+    // }
 
     renderTask() {
         const importantList = this.props.Data.filter(item => {
@@ -31,6 +41,7 @@ class ImportantTodoList extends React.Component {
         })
     }
     renderTaskuncheck() {
+        this.checkCompleteList()
         const importantList = this.props.Data.filter(item => {
             if (item.important) {
                 return item
@@ -55,7 +66,8 @@ class ImportantTodoList extends React.Component {
    
     render() {
         return <div>{this.renderTask()}
-            <h4>compeletd</h4>
+            {/* {!this.state.checkComplete ? null:<h4>compeletd</h4> } */}
+            <h4>completed</h4>
             {this.renderTaskuncheck()}
         </div>
     }

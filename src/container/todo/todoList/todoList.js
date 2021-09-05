@@ -4,7 +4,20 @@ class TodoList extends React.Component {
     state = {
         details: [],
         search: this.props.search,
+        // checkComplete: false
     }
+
+    // componentDidMount() {
+
+    // }
+
+    // checkCompleteList() {
+    //     const check = this.props.Data.filter(item => {
+    //         if (item.completed == true) {
+    //             this.setState({ checkComplete: true })
+    //         }
+    //     })
+    // }
 
     renderTask() {
         const todosSearch = this.props.Data.filter(item => {
@@ -23,6 +36,7 @@ class TodoList extends React.Component {
         })
     }
     renderTaskuncheck() {
+
         const todosSearch = this.props.Data.filter(item => {
             return item.title.includes(this.props.search)
         })
@@ -40,6 +54,7 @@ class TodoList extends React.Component {
     }
     render() {
         return <div>{this.renderTask()}
+            {/* {!this.state.checkComplete ? null:<h4>compeletd</h4> } */}
             <h4>compeletd</h4>
             {this.renderTaskuncheck()}
         </div>

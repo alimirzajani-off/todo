@@ -80,23 +80,23 @@ class Info extends React.Component {
                             </div>
                         </div>
                         <div className="task-info add-task-file d-flex p-3">
-                        <button className="add-file-button btn" aria-haspopup="true">
-                        <div className="add-task-file-icon">
-                                <i className="las la-paperclip"></i>
-                            </div>
-                            <div className="add-task-file-txt pr-3">
-                                {/* <div> */}
+                            <button className="add-file-button btn" aria-haspopup="true">
+                                <div className="add-task-file-icon">
+                                    <i className="las la-paperclip"></i>
+                                </div>
+                                <div className="add-task-file-txt pr-3">
+                                    {/* <div> */}
 
-                                {/* </div>
+                                    {/* </div>
                                 <div> */}
 
-                                <input id="fileAttach" type="file" name="file" className="fileInput" onChange={(e, id) => this.props.handleUploadFile(e, this.props.InfoDetail.todo_id)} />
-                                <label for="fileAttach" className="fileInputLabel" ><span>Add file</span></label>
-                                
-                                {/* </div> */}
-                            </div>
-                        </button>
-                            
+                                    <input id="fileAttach" type="file" name="file" className="fileInput" onChange={(e, id) => this.props.handleUploadFile(e, this.props.InfoDetail.todo_id)} />
+                                    <label for="fileAttach" className="fileInputLabel" ><span>Add file</span></label>
+
+                                    {/* </div> */}
+                                </div>
+                            </button>
+
                         </div>
 
                         <div className="task-info p-3">
@@ -111,10 +111,10 @@ class Info extends React.Component {
                             <i className="las la-caret-square-left" onClick={() => this.props.handleDisplayOffInfo(this.props.InfoDetail.todo_id)}></i>
                         </div>
                         <div className="center">
-                            <span>{this.state.currentDate[0]==this.props.InfoDetail.time? <p>Created Today</p> : <p>Created on {moment(this.props.InfoDetail.time).format("dddd, MMMM D")}</p>}</span>
+                            <span>{this.state.currentDate[0] == this.props.InfoDetail.time ? <p>Created Today</p> : <p>Created on {moment(this.props.InfoDetail.time).format("dddd, MMMM D")}</p>}</span>
                         </div>
                         <div className="left">
-                           <Delete InfoDetail={this.props.InfoDetail} getData={this.props.getData} displayOffInfo={this.props.displayOffInfo} />
+                            <Delete InfoDetail={this.props.InfoDetail} getData={this.props.getData} displayOffInfo={this.props.displayOffInfo} />
                         </div>
                     </div>
                     {/* <InfoFooter InfoDetail={this.props.InfoDetail} handleDisplayOffInfo={this.props.handleDisplayOffInfo} handleDeleteInfo={this.props.handleDeleteInfo} /> */}
